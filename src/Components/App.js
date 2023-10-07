@@ -1,8 +1,15 @@
-import Banner from './banner';
-
+import Banner from './banner'
+// import Cart from './Cart'
+import ShoppingList from './shoppingList'
 
 function App() {
-  return <Banner />
+	return (
+		<div>
+			<Banner />
+			{/* <Cart /> */}
+			<ShoppingList />
+		</div>
+	)
 }
 
-export default App;
+export default App
