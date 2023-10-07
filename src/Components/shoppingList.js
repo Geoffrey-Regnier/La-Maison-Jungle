@@ -9,6 +9,7 @@ function ShoppingList() {
 		[]
 	)
 
+
 	return (
 		<div>
 			<ul>
@@ -19,7 +20,7 @@ function ShoppingList() {
 			<ul className='lmj-plant-list'>
 				{plantList.map((plant) => (
 					<li key={plant.id} className='lmj-plant-item'>
-						{plant.name}
+						{plant.name}{plant.isSpecialOffer && <div className="lmj-sales"><p>Soldes</p></div>}
 					</li>
 				))}
 			</ul>
