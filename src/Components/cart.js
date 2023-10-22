@@ -1,4 +1,4 @@
-import '../styles/Cart.css'
+import '../Styles/Cart.css'
 
 function Cart() {
 	const monsteraPrice = 8
