@@ -4,21 +4,29 @@ import '../Styles/Footer.css'
 
 function Footer() {
 	const [inputValue, setInputValue] = useState('')
-	const isInputError = !inputValue.includes('@')
+
+	function handleInput(e) {
+		setInputValue(e.target.value)
+	}
+
+	function handleBlur() {
+		if (!inputValue.includes('@')) {
+			alert("Attention, il n'y a pas d'@, ceci n'est pas une adresse valide 😥")
+		}
+	}
 
 	return (
 		<footer className='lmj-footer'>
 			<div className='lmj-footer-elem'>
 				Pour les passionné·e·s de plantes 🌿🌱🌵
 			</div>
-			<textarea
-  				className='lmj-footer-elem'
-  				placeholder='Laissez-nous votre mail' 
-  				value={inputValue}
-  				onChange={(e) => setInputValue(e.target.value)}
-  				onBlur={() => isInputError && alert('L\'email doit contenir un @')}
+			<div className='lmj-footer-elem'>Laissez-nous votre mail :</div>
+			<input
+				placeholder='Entrez votre mail'
+				onChange={handleInput}
+				value={inputValue}
+				onBlur={handleBlur}
 			/>
-				<button className='lmj-footer-elem'onClick={() => alert(inputValue)}>Alertez moi 🚨</button>
 		</footer>
 	)
 }

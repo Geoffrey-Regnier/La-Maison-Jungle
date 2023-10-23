@@ -2,24 +2,13 @@ import Sun from '../Assets/sun.svg'
 import Water from '../Assets/water.svg'
 
 
-function handleClick(scaleValue, careType) {
-	const typeSoin =
-		careType === 'light' ? (
-			"de lumière"
-		) : (
-			"d'arrosage"
-		)
-
-	if (scaleValue === 1) {
-		alert(`Cette plante requiert peu ${typeSoin}`)
-	} else if (scaleValue === 2) {
-		alert(`Cette plante requiert modérément ${typeSoin}`)
-	} else if (scaleValue === 3) {
-		alert(`Cette plante requiert beaucoup ${typeSoin}`)
-	}
+const quantityLabel = {
+	1: 'peu',
+	2: 'modérément',
+	3: 'beaucoup'
 }
 
-function CareScale({ scaleValue, careType, onClick }) {
+function CareScale({ scaleValue, careType }) {
 	const range = [1, 2, 3]
 	const scaleType =
 		careType === 'light' ? (
@@ -29,7 +18,15 @@ function CareScale({ scaleValue, careType, onClick }) {
 		)
 
 	return (
-		<div onClick={() => handleClick(scaleValue, careType)}>
+		<div
+			onClick={() =>
+				alert(
+					`Cette plante requiert ${quantityLabel[scaleValue]} ${
+						careType === 'light' ? 'de lumière' : "d'arrosage"
+					}`
+				)
+			}
+		>
 			{range.map((rangeElem) =>
 				scaleValue >= rangeElem ? (
 					<span key={rangeElem.toString()}>{scaleType}</span>
@@ -38,6 +35,5 @@ function CareScale({ scaleValue, careType, onClick }) {
 		</div>
 	)
 }
-
 
 export default CareScale
